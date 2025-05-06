@@ -1,0 +1,9 @@
+Preactical number 5 : MQTT in cmd
+
+cmd likhna hai 
+
+make broker, publisher(1) , subscriber (3)
+
+mosquitto_pub -h localhost -t "mahakumbh/health" -m "____________"
+mosquitto_sub -h localhost -t "mahakumbh/health" 
+mosquitto_sub -h localhost -t "mahakumbh/+"

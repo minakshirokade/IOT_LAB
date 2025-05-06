@@ -1,0 +1,169 @@
+ Wi-Fi (IEEE 802.11)
+Overview:
+Wi-Fi is a high-bandwidth, short-to-medium range wireless communication method.
+
+Used when devices need internet access or high-speed LAN communication.
+
+Power consumption is higher compared to protocols like Zigbee/LoRa.
+
+Common Libraries:
+ESP8266WiFi / WiFi.h (Arduino ecosystem)
+
+For ESP8266 / ESP32 microcontrollers.
+
+Easy connection to Wi-Fi networks and setting up HTTP, MQTT, etc.
+
+WiFiManager
+
+Auto-connect feature for IoT devices.
+
+Simplifies provisioning devices without hard-coding SSIDs.
+
+lwIP (Lightweight IP)
+
+Low-level TCP/IP stack used on ESP32/ESP8266, very efficient.
+
+Mongoose OS WiFi API
+
+Higher-level embedded OS for IoT.
+
+Supports Wi-Fi provisioning, OTA updates, MQTT over Wi-Fi.
+
+Key Concepts:
+AP mode (Access Point) vs STA mode (Station).
+
+UDP for lightweight messages.
+
+TCP for reliable communication (e.g., HTTP, MQTT).
+
+📶 Bluetooth (Classic + BLE)
+Overview:
+Short-range (typically 10–100 meters).
+
+Classic Bluetooth: Audio streaming (headsets, etc.)
+
+BLE (Bluetooth Low Energy): Designed for IoT (low power, periodic data).
+
+Common Libraries:
+ArduinoBLE (for Arduino Nano 33 IoT, BLE boards)
+
+Allows device to act as a BLE peripheral or central.
+
+ESP32 BLE Arduino
+
+For ESP32 chips.
+
+Create GATT servers and clients easily.
+
+bluepy (Python)
+
+Bluetooth Low Energy communication for Linux (e.g., Raspberry Pi).
+
+Bluesniff / BLE Scanner libraries
+
+For scanning nearby BLE devices.
+
+Key Concepts:
+GATT Profile (Generic Attribute Profile)
+
+Defines how to exchange structured data.
+
+Advertising: BLE devices broadcast their existence.
+
+Services and Characteristics:
+
+Devices expose services, each service has characteristics (data points).
+
+Security: Bonding, pairing, encryption.
+
+ Zigbee (IEEE 802.15.4)
+Overview:
+Low-power, mesh-networking protocol.
+
+Short-range but extremely scalable (hundreds of nodes).
+
+Common in smart home (e.g., Philips Hue lights, smart plugs).
+
+Common Libraries:
+XBee Arduino Library (for Digi XBee modules)
+
+Simplifies sending/receiving Zigbee data over serial.
+
+Zigpy (Python)
+
+Python Zigbee stack (used in Home Assistant projects).
+
+ZStack (TI devices)
+
+Texas Instruments' Zigbee stack for embedded development.
+
+deCONZ API (for Conbee Zigbee gateway)
+
+Provides REST API over Zigbee devices.
+
+Key Concepts:
+Coordinator: One device starts/manages the network.
+
+Router: Extends network range, relays messages.
+
+End Device: Battery-powered sensor, sleeps most of the time.
+
+Cluster Library: Standardized device functions (on/off, temperature sensing).
+
+ LoRa (Long Range)
+Overview:
+Ultra long range (up to 10 km rural / 3 km urban).
+
+Very low power, suitable for remote sensing.
+
+Works on unlicensed ISM bands (e.g., 868MHz Europe, 915MHz US).
+
+LoRaWAN adds networking layers (gateways, network servers).
+
+Common Libraries:
+RadioHead Library (Arduino)
+
+Basic radio packet transmission.
+
+LoRa.h (Arduino LoRa library)
+
+Easy packet-based communication for boards like Arduino MKR WAN 1300.
+
+LMIC (LoraMAC-in-C)
+
+Full LoRaWAN stack (MAC layer).
+
+Supports OTAA/ABP joins, encryption, adaptive data rates.
+
+Paho MQTT-SN (for LoRa over MQTT networks)
+
+Key Concepts:
+LoRa (PHY layer): Only transmits packets; simple modulation (Chirp Spread Spectrum).
+
+LoRaWAN (MAC + network layer): Adds addressing, security, gateways.
+
+Classes:
+
+Class A (lowest power, default for sensors),
+
+Class B (scheduled listening),
+
+Class C (always listening).
+
+OTAA (Over-the-Air Activation) vs ABP (Activation by Personalization) for network joining.
+
+ Summary Table
+
+Protocol	Range	Power Use	Data Rate	Best For	Libraries
+Wi-Fi	~100m	High	High (Mbps)	Home/office devices with power	ESP8266WiFi, WiFiManager
+Bluetooth	~10–100m	Low (BLE)	Medium (kbps)	Wearables, smart gadgets	ArduinoBLE, bluepy
+Zigbee	~10–100m	Very Low	Low (kbps)	Smart homes, IoT networks	XBee, Zigpy
+LoRa	~3–15km	Very Low	Very Low (bps)	Remote sensors, agriculture	LoRa.h, LMIC
+ Bonus Tip: Choosing Based on Application
+High speed + lots of data → Wi-Fi.
+
+Short range + energy efficient → BLE.
+
+Large number of small devices → Zigbee.
+
+Long-range, infrequent data → LoRa.

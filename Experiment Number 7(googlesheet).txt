@@ -1,0 +1,191 @@
+AIM:
+Create a real-time log register on Google Cloud using Python.
+
+Tools Used:
+Google Cloud Console
+
+Google Sheets API
+
+Python 3
+
+Libraries: gspread, oauth2client
+
+Sensor (optional for humidity/temperature) or simulated data
+
+Internet Connection
+
+Theory:
+A real-time log register captures and records data dynamically into a cloud database or sheet.
+In this project, Google Sheets acts as a live database where Python fetches real-time data like
+ humidity, temperature, and time, and automatically updates the sheet.
+Using Google Sheets API and OAuth2 authentication, the Python script gains secure access to the
+sheet and sends the data programmatically.
+This setup ensures:
+Real-time data logging
+Cloud storage accessibility
+Automation without manual entry
+The timestamp feature ensures that each record is accurately logged with the exact time of data capture.
+
+Conclusion:
+Thus, we successfully created a real-time log register using Google Cloud and Python.
+The data (temperature, humidity, timestamp) was automatically recorded into a Google Sheet, 
+demonstrating how Python can be used to interact with cloud-based services for live data logging
+ and monitoring.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Steps:
+ Part I: Setting up Google Cloud for Google Sheets API
+You are doing this part so that your Python code can talk to Google Sheets.
+
+Step-by-Step:
+
+Go to console.cloud.google.com
+
+This is Google's Cloud Platform where you manage services like APIs.
+
+Create a New Project
+
+Think of a "project" like a folder where you keep all your cloud work organized.
+
+Search and Select 'New Project'
+
+You’re making a fresh project specifically for your Google Sheets API work.
+
+Give Project Name 'IoT 123'
+
+Naming the project helps you recognize it easily later.
+
+Create the Project
+
+Google sets up this folder for you in the cloud.
+
+Select the Project (Notification appears)
+
+You now enter your newly created project.
+
+Go to 'APIs & Services'
+
+This is the area where you add extra powers (APIs) to your project.
+
+Enable APIs and Services
+
+Google APIs are not enabled by default—you manually turn them ON.
+
+Enable APIs and Services Again
+
+Here, you are preparing to enable a specific API.
+
+Search for 'Sheets API'
+
+This API allows your program to READ, WRITE, and UPDATE Google Sheets automatically.
+
+Select 'Google Sheets API'
+
+Enable It
+
+You activate the Sheets API for your project.
+
+Again Enable APIs and Services
+
+You need one more API.
+
+Search for 'Drive API'
+
+Google Sheets live inside Google Drive. To create/open sheets properly, Drive API is also needed.
+
+Select 'Google Drive API'
+
+Enable It
+
+Now your project can use Google Drive (to find the sheet) and Google Sheets (to update content).
+
+Part II: Creating Credentials (Authentication)
+You are doing this part to create a Service Account that can access the Google Sheet securely.
+
+Step-by-Step:
+
+Go to 'Credentials' Tab
+
+You are now setting up a secure way to login.
+
+Create Credentials → Service Account
+
+Service Accounts are special Google accounts used by apps (like your Python script).
+
+Service Account
+
+You are making a separate account to represent your script.
+
+Give Name 'IoT 123'
+
+Again, this is just for easy identification.
+
+Click 'Continue'
+
+Copy the Email Address
+
+This is very important! This service account has an email address (example: iot123@yourproject.iam.gserviceaccount.com).
+
+Create
+
+Select Role → Basic → Editor
+
+You are giving permissions: your service account can READ and WRITE files (Editor permission).
+
+Done
+
+Click on Service Account
+
+Go to Key Tab
+
+Keys are like passwords.
+
+Add Key → Create New Key
+
+Select JSON → Create
+
+This generates a special .json file. Your Python script will use this file to login automatically.
+
+JSON File is Downloaded
+
+Save this file in your Python project folder.
+(This file is like your script's ID card.)
+
+Part III: Google Sheet Preparation + Python Code
+You are doing this part to prepare the Google Sheet and run your Python script.
+
+Step-by-Step:
+
+Open a New Google Sheet
+
+Create a Blank Spreadsheet
+
+Change the Sheet Name to 'IoT 123'
+
+The name here MUST match the name you use in your code.
+
+Share the Sheet
+
+Share it with the service account email you copied earlier.
+
+Give Editor access so it can update the sheet.
+
+Send
+
